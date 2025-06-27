@@ -1,14 +1,19 @@
 package com.jeishiva
 
 import com.jeishiva.binary_search.binarySearch
+import com.jeishiva.binary_search.lowerBound
+import com.jeishiva.binary_search.upperBound
 
 
 fun main() {
+    val input = intArrayOf(3,6,6,6,6,6)
     val result = binarySearch(
-        intArrayOf(2,4,5,6,8,10,12,14),
-        8
+        input,
+        6
     )
-    println("result $result")
+    println("result ${lowerBound(input, 6)}")
+    println("result ${upperBound(input, 6)}")
+
 }
 
 
