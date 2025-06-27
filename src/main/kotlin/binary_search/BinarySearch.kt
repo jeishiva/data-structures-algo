@@ -3,7 +3,7 @@ package com.jeishiva.binary_search
 
 fun binarySearch(sortedInput: IntArray, search: Int): Boolean {
     var left = 0
-    var right = sortedInput.size
+    var right = sortedInput.size - 1
     while (left <= right) {
         val mid = left + (right - left) / 2
         if (sortedInput[mid] == search) {
@@ -16,3 +16,4 @@ fun binarySearch(sortedInput: IntArray, search: Int): Boolean {
     }
     return false
 }
+
