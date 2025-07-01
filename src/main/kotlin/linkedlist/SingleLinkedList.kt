@@ -124,7 +124,6 @@ class SingleLinkedList {
             print("${current.value} -> ")
             current = current.next
         }
-        println("null")
     }
 
 }
