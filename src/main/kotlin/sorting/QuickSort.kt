@@ -2,10 +2,10 @@ package com.jeishiva.sorting
 
 import com.jeishiva.utils.swap
 
-
 fun quickSort(input: IntArray, start: Int, end: Int) {
+    if (start >= end) return
     val middle = start + (end - start) / 2
-    val partition = sortPartition(input, 0, end, pivot = input[middle])
+    val partition = sortPartition(input, start, end, pivot = input[middle])
     quickSort(input, start, partition - 1)
     quickSort(input, partition, end)
 }

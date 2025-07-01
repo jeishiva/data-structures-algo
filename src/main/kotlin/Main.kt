@@ -1,12 +1,11 @@
 package com.jeishiva
 
-import com.jeishiva.map.HashMap
+import com.jeishiva.sorting.mergeSort
 
 
 fun main() {
-    val map = HashMap<String, String>()
+    val input = intArrayOf(0, -1)
+    mergeSort(input)
+    println("sorted ${input.contentToString()}")
 }
 
-class Solution {
-
-}
