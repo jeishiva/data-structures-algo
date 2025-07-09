@@ -1,11 +1,22 @@
 package com.jeishiva
 
-import com.jeishiva.sorting.mergeSort
-
+import com.jeishiva.binarytree.BSTRecursive
+import com.jeishiva.binarytree.BTNode
+import com.jeishiva.binarytree.BTTraversalType
 
 fun main() {
-    val input = intArrayOf(0, -1)
-    mergeSort(input)
-    println("sorted ${input.contentToString()}")
+
+    val tree = BSTRecursive<Int>()
+    tree.insert(node = BTNode(50))
+    tree.insert(node = BTNode(30))
+    tree.insert(node = BTNode(70))
+    tree.insert(node = BTNode(20))
+    tree.insert(node = BTNode(40))
+    tree.insert(node = BTNode(60))
+    tree.insert(node = BTNode(10))
+
+    tree.delete(60)
+
+    tree.traverse(BTTraversalType.InOrder)
 }
 
