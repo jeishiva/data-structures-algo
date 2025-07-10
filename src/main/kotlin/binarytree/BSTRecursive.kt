@@ -7,9 +7,6 @@ package com.jeishiva.binarytree
 class BSTRecursive<T : Comparable<T>> {
     private var root: BTNode<T>? = null
 
-    constructor()
-
-
     /**
      * Inserts a node into the binary search tree.
      *
@@ -70,10 +67,12 @@ class BSTRecursive<T : Comparable<T>> {
                     node
                 }
             }
+
             value > node.value -> {
                 node.right = deleteRecursive(value, node.right)
                 node
             }
+
             else -> {
                 node.left = deleteRecursive(value, node.left)
                 node
@@ -109,7 +108,7 @@ class BSTRecursive<T : Comparable<T>> {
      * @param traversalType the type of traversal to perform on the tree
      *                      (PreOrder, PostOrder, or InOrder)
      */
-    fun traverse(traversalType: BTTraversalType) : List<T> {
+    fun traverse(traversalType: BTTraversalType): List<T> {
         val result = mutableListOf<T>()
         when (traversalType) {
             BTTraversalType.PreOrder -> {
@@ -165,7 +164,7 @@ class BSTRecursive<T : Comparable<T>> {
      *
      * @param root the root of the subtree to traverse
      */
-    private fun inOrderTraversal(root: BTNode<T>?,result: MutableList<T>) {
+    private fun inOrderTraversal(root: BTNode<T>?, result: MutableList<T>) {
         root ?: return
         inOrderTraversal(root.left, result)
         result.add(root.value)

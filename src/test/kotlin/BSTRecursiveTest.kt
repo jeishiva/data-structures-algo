@@ -1,5 +1,6 @@
-package com.jeishiva.binarytree
-
+import com.jeishiva.binarytree.BSTRecursive
+import com.jeishiva.binarytree.BTNode
+import com.jeishiva.binarytree.BTTraversalType
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
