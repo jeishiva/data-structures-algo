@@ -1,12 +1,12 @@
 package com.jeishiva
 
-import com.jeishiva.binarytree.BSTIterative
+import com.jeishiva.binarytree.BSTRecursive
 import com.jeishiva.binarytree.BTNode
 import com.jeishiva.binarytree.BTTraversalType
 
 fun main() {
 
-    val tree = BSTIterative<Int>()
+    val tree = BSTRecursive<Int>()
     tree.insert(node = BTNode(50))
     tree.insert(node = BTNode(30))
     tree.insert(node = BTNode(70))
@@ -14,7 +14,7 @@ fun main() {
     tree.insert(node = BTNode(40))
     tree.insert(node = BTNode(60))
     tree.insert(node = BTNode(10))
-    val list = tree.traverse(BTTraversalType.InOrder)
+    val list = tree.traverse(BTTraversalType.LevelOrder)
     list.forEach {
         println(it)
     }

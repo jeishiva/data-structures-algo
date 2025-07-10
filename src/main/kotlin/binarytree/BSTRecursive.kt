@@ -122,6 +122,10 @@ class BSTRecursive<T : Comparable<T>> {
             BTTraversalType.InOrder -> {
                 inOrderTraversal(this.root, result)
             }
+
+            BTTraversalType.LevelOrder -> {
+                return levelTraversal(this.root)
+            }
         }
         return result
     }
@@ -169,5 +173,34 @@ class BSTRecursive<T : Comparable<T>> {
         inOrderTraversal(root.left, result)
         result.add(root.value)
         inOrderTraversal(root.right, result)
+    }
+
+
+    private fun levelTraversal(root: BTNode<T>?): List<T> {
+        root ?: return emptyList()
+        val level = ArrayDeque<BTNode<T>>()
+        level.addLast(root)
+        return levelRecursiveHelper(level)
+    }
+
+    private fun levelRecursiveHelper(
+        currentLevel: ArrayDeque<BTNode<T>>,
+    ): List<T> {
+        if (currentLevel.isEmpty()) {
+            return emptyList()
+        }
+        val nextLevel = ArrayDeque<BTNode<T>>()
+        val levelValues = mutableListOf<T>()
+        while (currentLevel.isNotEmpty()) {
+            val node = currentLevel.removeFirst()
+            levelValues.add(node.value)
+            node.left?.let {
+                nextLevel.addLast(it)
+            }
+            node.right?.let {
+                nextLevel.addLast(it)
+            }
+        }
+        return levelValues + levelRecursiveHelper(nextLevel)
     }
 }

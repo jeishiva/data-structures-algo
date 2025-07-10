@@ -92,6 +92,10 @@ class BSTIterative<T : Comparable<T>> {
             BTTraversalType.InOrder -> {
                 inOrderTraversal(this.root)
             }
+
+            BTTraversalType.LevelOrder -> {
+                levelOrderTraversals(this.root)
+            }
         }
     }
 
@@ -104,10 +108,10 @@ class BSTIterative<T : Comparable<T>> {
      * @param root the root of the subtree to traverse
      */
     private fun preOrderTraversal(root: BTNode<T>?): List<T> {
-        root ?: emptyList<T>()
+        root ?: return emptyList<T>()
         val result = mutableListOf<T>()
         val stack = ArrayDeque<BTNode<T>>()
-        stack.addLast(root!!)
+        stack.addLast(root)
         while (stack.isNotEmpty()) {
             val currentNode = stack.removeLast()
             result.add(currentNode.value)
@@ -131,10 +135,10 @@ class BSTIterative<T : Comparable<T>> {
      */
 
     private fun postOrderTraversal(root: BTNode<T>?): List<T> {
-        root ?: emptyList<T>()
+        root ?: return emptyList<T>()
         val result = ArrayDeque<T>()
         val stack = ArrayDeque<BTNode<T>>()
-        stack.addLast(root!!)
+        stack.addLast(root)
         while (stack.isNotEmpty()) {
             val currentNode = stack.removeLast()
             result.addFirst(currentNode.value)
@@ -157,7 +161,7 @@ class BSTIterative<T : Comparable<T>> {
      * @param root the root of the subtree to traverse
      */
     private fun inOrderTraversal(root: BTNode<T>?): List<T> {
-        root ?: emptyList<T>()
+        root ?: return emptyList()
         val result = ArrayDeque<T>()
         val stack = ArrayDeque<BTNode<T>>()
         var current: BTNode<T>? = root
@@ -171,6 +175,23 @@ class BSTIterative<T : Comparable<T>> {
             current = current.right
         }
         return result
+    }
+
+    /**  level order traversals of the binary search tree
+     *   @param root the root of the subtree to traverse
+     */
+    private fun levelOrderTraversals(root: BTNode<T>?): List<T> {
+        root ?: return emptyList()
+        val stack = ArrayDeque<BTNode<T>>()
+        stack.add(root)
+        val result = ArrayDeque<T>()
+        while (stack.isNotEmpty()) {
+            val current = stack.removeFirst()
+            result.addLast(current.value)
+            current.left?.let { stack.addLast(it) }
+            current.right?.let { stack.addLast(it) }
+        }
+        return result.toList()
     }
 
 }
